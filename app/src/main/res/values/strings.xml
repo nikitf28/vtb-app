@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">VTB-Auto</string>
+    <string-array name="my_string_array">
+        <item>Mazda 6 sedan</item>
+        <item>Mazda 3 sedan</item>
+        <item>Cadillac ESCALADE</item>
+        <item>Jaguar F-PACE</item>
+        <item>BMW 5 sedan</item>
+        <item>KIA Sportage</item>
+        <item>Chevrolet Tahoe</item>
+        <item>KIA K5 sedan</item>
+        <item>Hyundai Genesis sedan</item>
+        <item>Toyota Camry</item>
+        <item>Mercedes A sedan</item>
+        <item>Land Rover RANGE ROVER VELAR</item>
+        <item>BMW 3 sedan</item>
+        <item>KIA Optima sedan</item>
+        <item>Hyundai SOLARIS</item>
+        <item>KIA Rio</item>
+        <item>Volkswagen Polo</item>
+        <item>Volkswagen Tiguan</item>
+        <item>Skoda Octavia</item>
+
+    </string-array>
+</resources>
