@@ -189,6 +189,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 Toast.makeText(MainActivity.this, carsNames[pos], Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, CarSelect.class);
+                intent.putExtra("CarName", carsNames[pos]);
+                startActivity(intent);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -24,6 +25,9 @@ public class MyDialogFragmentChooseCar extends DialogFragment {
                         Toast.makeText(getActivity(),
                                 "Вы выбрали: " + stringArray[which],
                                 Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), CarSelect.class);
+                        intent.putExtra("CarName", stringArray[which]);
+                        startActivity(intent);
                     }
                 });
 
