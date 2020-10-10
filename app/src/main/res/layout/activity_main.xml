@@ -4,39 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/button"
-        android:onClick="onClickButton1"
-        android:layout_width="189dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="204dp"
-        android:text="Найти авто по фото"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="189dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="72dp"
-        android:onClick="onClickButton2"
-        android:text="Выбрать авто из списка"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+    tools:context=".MainActivity"
+    android:background="#FFFFFF">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="174dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="108dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.051"
-        app:srcCompat="@android:mipmap/sym_def_app_icon" />
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#42000000"
+        android:contentDescription="@string/shadow" />
+
+    <LinearLayout
+
+        android:id="@+id/headbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#3A83F1">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/logo"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/big"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/Text"
+            android:textColor="#FFFF"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/auto"
+            android:textColor="#FFFF"
+            android:textSize="35sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="667dp"
+        android:layout_below="@+id/shadow"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-6dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/photo"
+                android:onClick="onClickButton1"
+                android:layout_width="130dp"
+                android:layout_height="300dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/photo" />
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/photo"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="-20dp"
+                android:text="@string/cnumok"
+                android:textAlignment="center"
+                android:textColor="#f000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:onClick="onClickButton2"
+                android:id="@+id/photo2"
+                android:layout_width="160dp"
+                android:layout_height="300dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/select1" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/photo2"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="-30dp"
+                android:paddingBottom="10dp"
+                android:text="@string/cpisok"
+                android:textAlignment="center"
+                android:textColor="#f000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

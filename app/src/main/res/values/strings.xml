@@ -20,6 +20,13 @@
         <item>Volkswagen Polo</item>
         <item>Volkswagen Tiguan</item>
         <item>Skoda Octavia</item>
-
     </string-array>
+    <string name="Text">ВТБ</string>
+    <string name="logo">LOGO</string>
+    <string name="shadow">shadow</string>
+    <string name="auto">авто</string>
+    <string name="cnumok">Сделать снимок</string>
+    <string name="cpisok">Выбрать из списка</string>
+
+
 </resources>
