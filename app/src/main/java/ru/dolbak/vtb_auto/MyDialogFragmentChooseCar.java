@@ -18,7 +18,7 @@ public class MyDialogFragmentChooseCar extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final String[] stringArray = getResources().getStringArray(R.array.my_string_array);
         Arrays.sort(stringArray);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.DialogFragment);
         builder.setTitle("Выберите авто")
                 .setItems(stringArray, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

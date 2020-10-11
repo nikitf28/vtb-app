@@ -2,31 +2,27 @@ package ru.dolbak.vtb_auto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.accounts.NetworkErrorException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.BitSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CarSelect extends AppCompatActivity {
@@ -35,14 +31,25 @@ public class CarSelect extends AppCompatActivity {
     String carBrand, carModel;
     HashMap<String, String> countriesFlags;
     ImageView imageView;
-
+    Button button;
+    ListView listView;
+    ArrayList<Bitmap> pictures;
+    TextView carNameView, carPrice;
+    int picNow = 0;
+    int price = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_select);
 
-        tv = findViewById(R.id.textView);
-        imageView = findViewById(R.id.imageView);
+        carNameView = findViewById(R.id.name);
+        carPrice = findViewById(R.id.count);
+        pictures = new ArrayList<>();
+        tv = findViewById(R.id.settingsAuto);
+        imageView = findViewById(R.id.auto);
+        button = findViewById(R.id.credit);
+        button.setClickable(false);
+        button.setVisibility(View.INVISIBLE);
         HashMap<String, String[]> carNames = new HashMap<>();
         carNames.put("Mazda 6", new String[]{"Mazda", "6"});
         carNames.put("Mazda 3", new String[]{"Mazda", "6"});
@@ -76,6 +83,32 @@ public class CarSelect extends AppCompatActivity {
         Network network = new Network();
         network.execute();
 
+    }
+
+    public void onClickButton1(View view){
+        Intent intent = new Intent(CarSelect.this, loanActivity.class);
+        intent.putExtra("brand", carBrand);
+        intent.putExtra("model", carModel);
+        intent.putExtra("price", price);
+        startActivity(intent);
+    }
+
+    public void left(View view){
+        Log.d("BTN", "left");
+        Log.d("BTN", "Now: " + picNow + " All: " + pictures.size());
+        if (picNow > 0){
+            picNow--;
+            imageView.setImageBitmap(pictures.get(picNow));
+        }
+    }
+
+    public void right(View view){
+        Log.d("BTN", "right");
+        Log.d("BTN", "Now: " + picNow + " All: " + pictures.size());
+        if (picNow < pictures.size()-1){
+            picNow++;
+            imageView.setImageBitmap(pictures.get(picNow));
+        }
     }
 
     class Network extends AsyncTask<Void, Void, String> {
@@ -118,6 +151,21 @@ public class CarSelect extends AppCompatActivity {
             //return null;
         }
 
+        String splitPrice(int price){
+            String output = "";
+            int i = 0;
+            while (price > 0){
+                output = Integer.toString(price%10) + output;
+                price /= 10;
+                i++;
+                if (i % 3 == 0 && price > 0){
+                    output = " " + output;
+                }
+            }
+            output += " ₽";
+            return output;
+        }
+
         @Override
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
@@ -149,7 +197,7 @@ public class CarSelect extends AppCompatActivity {
                 }
 
                 Log.d("carINFO", carinfo.toString());
-                int doors=0, price=0;
+                int doors=0;
                 String carType="", enType="", photo1="", photo2="", photo3="", photo4="", photo5="", photo6="", photo7="", country="";
                 if (carinfo.has("bodies")){
                     doors = carinfo.getJSONArray("bodies").getJSONObject(0).getInt("doors");
@@ -216,12 +264,18 @@ public class CarSelect extends AppCompatActivity {
                 if (countriesFlags.containsKey(country)){
                     flag = countriesFlags.get(country);
                 }
-                String carText = carBrand + " " + carModel + "\nЦена: " + Integer.toString(price) +
-                        "\nТип корпуса: " + carType + "\nКолличество дверей: " + Integer.toString(doors) +
-                        "\nСтрана производитель: " + flag + country;
+                String carText = "\nТип кузова: " + carType + "\nКолличество дверей: " + Integer.toString(doors) +
+                        "\nСтрана производства: " + flag + country;
                 tv.setText(carText);
+                carPrice.setText(splitPrice(price));
+                carNameView.setText(carBrand + " " + carModel);
+                if (price > 0){
+                    button.setClickable(true);
+                    button.setVisibility(View.VISIBLE);
+                }
                 Network2 network1 = new Network2();
-                network1.execute(photo2);
+                //String[] photos = new String[]{};
+                network1.execute(photo1, photo2, photo3, photo4, photo5, photo6, photo7);
 
 
 
@@ -233,9 +287,9 @@ public class CarSelect extends AppCompatActivity {
 
     }
 
-    class Network2 extends AsyncTask<String, Void, Bitmap> {
+    class Network2 extends AsyncTask<String, Void, Void> {
 
-        Bitmap getImg(String link){
+        Bitmap getImg(String link) {
             OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
@@ -251,8 +305,7 @@ public class CarSelect extends AppCompatActivity {
                     final Bitmap bitmap = BitmapFactory.decodeStream(response.body().byteStream());
                     //tv.setText(responseStr);
                     return bitmap;
-                }
-                else {
+                } else {
                     Log.e("HTTP", response.body().string());
                 }
 
@@ -263,13 +316,24 @@ public class CarSelect extends AppCompatActivity {
         }
 
         @Override
-        protected Bitmap doInBackground(String... strings) {
-            return getImg(strings[0]);
+        protected Void doInBackground(String... strings) {
+            for (int i = 0; i < strings.length; i++) {
+                if (!strings[i].equals("")) {
+                    Bitmap bitmap = getImg(strings[i]);
+                    //Log.d("pic " + i, strings[i]);
+                    pictures.add(bitmap);
+                }
+                Log.d("Num", pictures.size() + "");
+            }
+            //
+            return null;
         }
 
         @Override
-        protected void onPostExecute(Bitmap bitmap){
-            imageView.setImageBitmap(bitmap);
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            imageView.setImageBitmap(pictures.get(picNow));
         }
+
     }
 }

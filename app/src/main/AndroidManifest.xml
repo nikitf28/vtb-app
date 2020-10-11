@@ -13,10 +13,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
+        android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".CarSelect"></activity>
+        <activity android:name=".EndActivity"></activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".CarSelect" />
+        <activity android:name=".loanActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

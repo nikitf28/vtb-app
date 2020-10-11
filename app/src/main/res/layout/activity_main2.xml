@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="#FFFF">
+
+    <ImageView
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#42000000"
+        android:contentDescription="@string/shadow" />
+
+    <LinearLayout
+
+        android:id="@+id/headbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#3A83F1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/logo"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/big"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/Text"
+            android:textColor="#FFFF"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/auto"
+            android:textColor="#FFFF"
+            android:textSize="35sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#F3F4F7"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editSecondName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="Фамилия"
+            android:inputType="textCapWords"
+            android:text="" />
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="Никита"
+            android:inputType="textCapWords"
+            android:text="" />
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editMiddleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="Отчество"
+            android:inputType="textCapWords"
+            android:text="" />
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editBDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="Дата рождения"
+            android:inputType="text"
+            android:text="" />
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="Город проживания"
+            android:inputType="textCapWords"
+            android:text="" />
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text=""
+            android:hint="Адрес электроной почты"/>
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text=""
+            android:hint="Ваш доход"/>
+
+
+        <EditText
+            android:textColor="#F000"
+            android:textColorHint="#D5D8DF"
+            android:id="@+id/editPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:text=""
+            android:hint="Номер телефона"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/gender">
+
+            <TextView
+                android:textColor="#F000"
+                android:textColorHint="#D5D8DF"
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Пол" />
+
+            <RadioButton
+                android:textColor="#F000"
+                android:textColorHint="#D5D8DF"
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Мужской" />
+
+            <RadioButton
+                android:textColor="#F000"
+                android:textColorHint="#D5D8DF"
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Женскй" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Отправить заявку"
+                android:onClick="onClickSend"/>
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

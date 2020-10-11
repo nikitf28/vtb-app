@@ -1,49 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarSelect"
-    android:background="#FFFFFF">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="328dp"
-        android:layout_height="218dp"
-        android:text="New activity"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.246"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+    android:background="#FFFF"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="180dp"
-        android:layout_height="173dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.417"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#42000000"
+        android:contentDescription="@string/shadow" />
+
+    <LinearLayout
+
+        android:id="@+id/headbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#3A83F1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/logo"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/big"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/Text"
+            android:textColor="#FFFF"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/auto"
+            android:textColor="#FFFF"
+            android:textSize="35sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#F3F4F7"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/listAuto"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:layout_marginTop="70dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_weight="0.01"
+            android:id="@+id/left"
+            android:background="#89B5F7"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:onClick="left"/>
+        <ImageView
+            android:layout_weight="1"
+            android:id="@+id/auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:layout_weight="0.01"
+            android:id="@+id/right"
+            android:background="#89B5F7"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:onClick="right"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listAuto"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="20dp"
+        android:background="#F3F4F7"
+        android:textColor="#F000"
+        android:textSize="100px"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/settingsAuto"
+        android:layout_width="361dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="20dp"
+        android:background="#F3F4F7"
+        android:textColor="#F000" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="356dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/settingsAuto"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="20dp"
+        android:background="#F3F4F7"
+        android:textColor="#F000"
+        android:textStyle="bold"
+        android:textSize="60px" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:layout_marginBottom="164dp"
+        android:id="@+id/credit"
+        android:layout_width="351dp"
+        android:layout_height="101dp"
+        android:layout_below="@+id/count"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="20dp"
+        android:textAlignment="center"
+        android:textColor="#FFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
         android:text="Купить в кредит"
+        android:onClick="onClickButton1"/>
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
