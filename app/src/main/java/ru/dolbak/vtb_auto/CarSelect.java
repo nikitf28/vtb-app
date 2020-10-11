@@ -48,7 +48,7 @@ public class CarSelect extends AppCompatActivity {
         carNames.put("Mazda 3", new String[]{"Mazda", "6"});
         carNames.put("Cadillac ESCALADE", new String[]{"Cadillac", "ESCALADE"});
         carNames.put("Jaguar F-PACE", new String[]{"Jaguar", "F-PACE"});
-        carNames.put("BMW 5", new String[]{"BMW", "5 серии"});
+        carNames.put("BMW 5", new String[]{"BMW", "5 серия"});
         carNames.put("KIA Sportage", new String[]{"KIA", "Sportage"});
         carNames.put("Chevrolet Tahoe", new String[]{"Chevrolet", "Tahoe"});
         carNames.put("KIA K5", new String[]{"KIA", "K5"});
@@ -220,8 +220,8 @@ public class CarSelect extends AppCompatActivity {
                         "\nТип корпуса: " + carType + "\nКолличество дверей: " + Integer.toString(doors) +
                         "\nСтрана производитель: " + flag + country;
                 tv.setText(carText);
-                Network2 network2 = new Network2();
-                network2.execute(photo1);
+                Network2 network1 = new Network2();
+                network1.execute(photo2);
 
 
 
